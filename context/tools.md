@@ -50,5 +50,5 @@ Akiva's existing tech stack. Reference this when drafting workflows or recommend
 ## Future / To-Add
 
 - CRM: AppFolio (already in place)
-- Calendar: Google Calendar (connect via Composio MCP -- see `docs/mcp-setup.md`)
-- Email: Gmail (connect via Composio MCP)
+- Calendar: Google Calendar -- connect via Claude Code Connectors (see `docs/mcp-setup.md`)
+- Email: Gmail -- connect via Claude Code Connectors

@@ -13,7 +13,7 @@ CRE-specific comp analysis. Pulls rent comps (lease) or sale comps (investment),
 
 1. Read `context/market.md` for submarket benchmarks Akiva has logged.
 2. Ask: are we doing a rent comp (leasing) or sale comp (investment)?
-3. Pull live data via `python3 tools/research.py "..."` if comps weren't provided.
+3. Pull live data via the WebSearch tool if comps weren't provided.
 4. Normalize and output the report below.
 
 ---

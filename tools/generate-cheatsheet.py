@@ -64,7 +64,7 @@ SKILLS = [
     ("CRE OPS",    "vacancy-marketing",   "Branded flyer + segmented email blast for any vacant space.",            "\"Vacancy at [address]\""),
     ("CRE OPS",    "contract-summary",    "Lease or PSA summary -- terms, dates, red-flag list.",                   "\"Summarize this lease\""),
     ("CRE OPS",    "comp-analysis",       "Rent comps, sale comps, cap rates, $/SF.",                               "\"Pull comps for [address]\""),
-    ("CRE OPS",    "market-research",     "Live Perplexity search -- submarkets, comps, news.",                     "\"Research [topic]\""),
+    ("CRE OPS",    "market-research",     "Live web search -- submarkets, comps, news (built-in WebSearch).",       "\"Research [topic]\""),
     ("CRE OPS",    "lead-research",       "Profile a LoopNet inquiry, broker rep, or prospect.",                    "\"Look up [name]\""),
     ("CRE OPS",    "follow-up-sequence",  "Touchpoint plan -- broker, tenant, prospect.",                           "\"Follow up with [name]\""),
     ("META",       "using-superpowers",   "Establishes the skills framework -- how this all hangs together.",       "Loads automatically"),
@@ -177,13 +177,14 @@ def render():
     # Side note in right column under META
     note_fnt = F_LIGHT(22)
     note_lines = [
-        "Tools (not skills):",
-        "  · tools/research.py -- live web data",
+        "Built-in tools:",
+        "  · WebSearch -- live web data",
+        "  · WebFetch -- pull specific URLs",
         "  · tools/generate-flyer.py -- 1-page flyer",
         "",
-        "MCP layer (set up once):",
-        "  · Gmail + Google Calendar via Composio",
-        "  · See docs/mcp-setup.md",
+        "Connectors (optional, no API keys):",
+        "  · Gmail / Calendar / Drive",
+        "  · Open Connectors panel in Claude Code",
     ]
     for ln in note_lines:
         draw.text((col_x_right, col2_y), ln, font=note_fnt, fill=SLATE)

@@ -11,11 +11,15 @@ Read `context/me.md` at the start of every session to orient yourself. Then chec
 You have access to real tools. Use them proactively -- don't just describe what you could do, do it.
 
 ### Research (Live Web Data)
-Run Perplexity search for any question requiring current data:
-```bash
-python3 tools/research.py "your query here"
-```
-Use for: Atlanta CRE submarket conditions, lease comps, sale comps, prospect research, broker background, news.
+Use Claude Code's built-in **WebSearch** for any question requiring current data:
+- Atlanta CRE submarket conditions
+- Lease comps, sale comps
+- Prospect / broker / firm research
+- News, market shifts
+
+For specific URLs (a LoopNet listing, a county tax record, a broker bio), use **WebFetch**.
+
+No API keys required.
 
 ### Vacancy Flyer (Branded Visual)
 Generate a branded vacancy flyer when a space comes available:
@@ -84,7 +88,7 @@ Skills live in `.claude/skills/`. Use them -- don't improvise when a skill exist
 
 ## How to Handle Any Request
 
-1. If it needs live data -- run `python3 tools/research.py "..."` first, then respond
+1. If it needs live data -- use the WebSearch tool, then respond
 2. If it's an email -- use the email-draft skill
 3. If it's a vacancy -- use the vacancy-marketing skill
 4. If it's a contract / lease -- use the contract-summary skill

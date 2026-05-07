@@ -5,52 +5,43 @@ description: Research any commercial real estate market, submarket, building, le
 
 # Market Research
 
-Uses live Perplexity search to pull current data on any CRE topic.
+Pulls current data on any CRE topic using Claude Code's built-in WebSearch and WebFetch tools.
 
 ---
 
 ## How to Use
 
-Run the research tool:
-```bash
-python3 tools/research.py "your query here"
-```
+Use the WebSearch tool for any query needing fresh data:
+- Submarket conditions, rents, vacancy rates
+- Sale comps, cap rates, NOI
+- Prospect / broker / firm research
+- News, market shifts, regulatory changes
 
-Then synthesize results into a clear, actionable brief for Akiva.
+For specific URLs (a LoopNet listing, a county tax record, a broker bio), use WebFetch.
+
+Synthesize results into a clear, actionable brief for Akiva.
 
 ---
 
-## Common Use Cases
+## Common Queries
 
 **Submarket conditions:**
-```bash
-python3 tools/research.py "Toco Hills Atlanta retail commercial real estate market 2026 -- average rents per SF NNN, vacancy rates, recent leases"
-```
+> "Toco Hills Atlanta retail commercial real estate market 2026 -- average rents per SF NNN, vacancy rates, recent leases"
 
 **Rent comps:**
-```bash
-python3 tools/research.py "comparable retail leases Toco Hills Atlanta 2025-2026 -- $/SF NNN, suite size, tenant mix"
-```
+> "comparable retail leases Toco Hills Atlanta 2025-2026 -- $/SF NNN, suite size, tenant mix"
 
 **Sale comps / cap rates:**
-```bash
-python3 tools/research.py "retail commercial real estate sales Atlanta 2025-2026 -- cap rates, $/SF, NOI"
-```
+> "retail commercial real estate sales Atlanta 2025-2026 -- cap rates, $/SF, NOI"
 
 **Prospect / broker research:**
-```bash
-python3 tools/research.py "[person or firm name] Atlanta commercial real estate -- background, recent deals, reviews"
-```
+> "[person or firm name] Atlanta commercial real estate -- background, recent deals, reviews"
 
 **Acquisition target intel:**
-```bash
-python3 tools/research.py "[address or property] ownership history, last sale, tax record, tenant list if public"
-```
+> "[address or property] ownership history, last sale, tax record, tenant list if public"
 
 **News / market shifts:**
-```bash
-python3 tools/research.py "Atlanta commercial real estate market trends April 2026 -- retail, office, mixed-use"
-```
+> "Atlanta commercial real estate market trends [month] 2026 -- retail, office, mixed-use"
 
 ---
 

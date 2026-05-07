@@ -56,7 +56,7 @@ Each new lead:
 ## Build Path
 
 1. **Day 1 / Demo:** Manual Claude + paste workflow -- forward LoopNet email, paste Google Voice transcript, Claude logs to wiki and drafts follow-up.
-2. **Day 14 / Once setup is stable:** Composio MCP for Gmail watches a folder, auto-parses LoopNet inquiries, creates the entries.
+2. **Day 14 / Once setup is stable:** Connect Gmail via Claude Code's native connector. Claude watches the inbox, auto-parses LoopNet inquiries, creates wiki entries, drafts the follow-up.
 3. **Day 30+:** AppFolio API connection (if exposed) so the wiki and AppFolio stay in sync without manual entry.
 
 ---

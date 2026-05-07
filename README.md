@@ -18,6 +18,8 @@ A Claude Code project folder with:
 
 ## Day 1 Setup (5 minutes)
 
+**No API keys required.** Works out of the box.
+
 **1. Install Claude Code** if you don't have it:
 - [claude.com/code](https://claude.com/code)
 
@@ -35,6 +37,18 @@ Onboard me.
 ```
 
 It'll walk you through 10 minutes of questions -- your portfolio, your market, your tools -- and fill in your context files. After that, every session starts with Claude already knowing your business.
+
+**4. (Optional) Connect Gmail and Calendar**
+
+Open Claude Code's **Connectors** panel. Click Connect on Gmail and Google Calendar to authorize with your Google account. That lights up the inbox triage and calendar features. Skip this if you'd rather paste emails in manually for now.
+
+**5. (Optional) Enable vacancy flyer generation**
+
+If you want Claude to generate branded vacancy flyers, install one Python dependency:
+```bash
+pip3 install Pillow
+```
+Skip this if you don't plan to use the flyer generator.
 
 ---
 
@@ -76,13 +90,18 @@ Open `wiki/overview.md` for the high-level view. Open `wiki/index.md` to see eve
 
 ---
 
-## Optional: Connect Gmail and Google Calendar
+## Optional: Connect Gmail, Calendar, and Drive
 
-Follow `docs/mcp-setup.md` to connect your Gmail and Calendar via Composio MCP. Once connected, Claude can:
+Claude Code has native connectors. Open the Connectors panel inside Claude Code to authorize Gmail, Google Calendar, and Drive in a few clicks. No API keys, no third-party service.
+
+Once connected, Claude can:
 - Triage your inbox
 - Draft replies you review before sending
 - Pull your calendar context into any conversation
-- Schedule on your behalf when you ask
+- Suggest meeting times
+- Save flyers and reports to a Drive folder
+
+See `docs/mcp-setup.md` for the walkthrough.
 
 ---
 

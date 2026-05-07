@@ -1,87 +1,71 @@
-# MCP Setup -- Gmail and Google Calendar
+# Connectors -- Gmail, Google Calendar, Drive
 
-Connect Claude to your Gmail and Google Calendar so it can triage your inbox, draft replies, and pull calendar context into any conversation. This is what lights up [[Email Triage]] (pain point #3).
+Claude Code has native connectors for Google Workspace, GitHub, and other services. Use those instead of wiring up third-party MCP layers. **No API keys to manage.**
 
----
-
-## What This Unlocks
-
-- Read your inbox and triage threads (urgent / response needed / FYI)
-- Draft replies you review before sending
-- Read your calendar and answer "what's on my schedule today?"
-- Suggest meeting times when someone proposes one
-- Save substantive threads to the wiki under the right entity
+This is what lights up [[Email Triage]] (pain point #3) and gives Claude visibility into your calendar.
 
 ---
 
-## Setup (Composio)
+## What You Can Connect
 
-This setup uses Composio to connect your Google account to Claude Code.
+Inside Claude Code, you can connect any of these natively:
 
-**Step 1: Create a Composio account**
+- **Gmail** -- read, draft, send, label
+- **Google Calendar** -- read events, create events, suggest times
+- **Google Drive** -- read and write docs, sheets, folders
+- **GitHub** -- only relevant if you're managing other repos
 
-Go to composio.dev and sign up for a free account.
+You pick what you want. None of them are required to use this assistant -- the assistant works fully offline against your local files. Connectors just expand what it can reach.
 
-**Step 2: Connect Google**
+---
 
-In the Composio dashboard:
-1. Go to "Apps" in the left sidebar
-2. Search for "Gmail" and click "Connect"
-3. Authorize with your Google account
-4. Repeat for "Google Calendar"
+## How to Connect (Claude Code)
 
-**Step 3: Get your API key**
+1. Open Claude Code
+2. Open the **Connectors** panel (or run `/connectors`)
+3. Pick the service you want -- start with Gmail and Google Calendar
+4. Click "Connect" -- Claude opens a Google OAuth window
+5. Authorize with your Google account
+6. Done -- Claude can now use that service in any session
 
-In Composio, go to Settings > API Keys and copy your key.
+Repeat for any other service you want to add. You can revoke any connector at any time.
 
-**Step 4: Add to your .env file**
+---
 
-Create a file called `.env` in this project folder:
+## Recommended for Akiva (in order)
 
-```
-COMPOSIO_API_KEY=your_key_here
-PERPLEXITY_API_KEY=your_perplexity_key_here
-```
+**Start with these two:**
+- **Gmail** -- so Claude can triage your inbox and draft replies you review
+- **Google Calendar** -- so Claude knows what's on your schedule and can suggest meeting times
 
-(Perplexity key is for `tools/research.py` -- get one free at perplexity.ai/settings/api.)
-
-**Step 5: Add Composio MCP to Claude Code**
-
-Add this to your Claude Code settings (or run via Claude Code settings UI):
-
-```json
-{
-  "mcpServers": {
-    "composio": {
-      "command": "npx",
-      "args": ["-y", "composio-core", "mcp", "--api-key", "your_key_here"]
-    }
-  }
-}
-```
-
-**Step 6: Restart Claude Code**
-
-Close and reopen Claude Code. It will now have access to Gmail and Calendar tools.
+**Add later if useful:**
+- **Google Drive** -- if you want Claude to save vacancy flyers, deal summaries, or comp reports straight to a Drive folder
 
 ---
 
 ## Verify It Works
 
-Ask Claude:
-- "Check my Gmail for any unread messages from brokers."
-- "What's on my calendar today?"
+Once connected, ask Claude:
+- "Check my Gmail for any unread broker emails."
+- "What's on my calendar tomorrow?"
 
-If it returns results, you're connected. If not, double-check your API key and restart Claude Code.
-
----
-
-## Security Note
-
-Your Google account access stays within Composio's OAuth flow -- Claude never sees your password. You can revoke access at any time from your Google account security settings.
+If it returns results, you're connected. If not, re-open the Connectors panel and reconnect.
 
 ---
 
-## Future: AppFolio
+## Security
 
-When AppFolio exposes a public API (or via a Zapier / make.com bridge), we'll add a similar MCP layer so leads can flow LoopNet → Claude → AppFolio automatically. See [[Lead Consolidation]] in the wiki for the build path.
+- All OAuth happens through Google's standard flow -- Claude never sees your password
+- You can revoke any connector instantly from the Connectors panel or from your Google account settings
+- Substantive email or calendar threads can be mirrored into your wiki (under the right entity page) if you ask Claude to
+
+---
+
+## What About AppFolio?
+
+AppFolio doesn't have a native Claude Code connector yet. For now:
+- Forward LoopNet inquiry emails into Claude (paste or via Gmail connector once it's set up)
+- Claude logs the lead to `[[portfolio.md]]` and the wiki, drafts a follow-up
+- You manually copy the substance into AppFolio at end-of-day
+
+When AppFolio exposes a public API (or via a simple bridge), we'll add it. See [[Lead Consolidation]] in the wiki for the build path.

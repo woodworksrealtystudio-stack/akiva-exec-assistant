@@ -13,7 +13,7 @@ Compiles a CRE-specific profile so Akiva walks into every conversation prepared.
 
 1. Read `context/portfolio.md` for any existing notes on this contact.
 2. Ask Akiva for any information he already has (the LoopNet email, the broker's call, the referral source).
-3. Run live research via `python3 tools/research.py "..."` for anything missing.
+3. Use Claude Code's WebSearch / WebFetch tools to pull anything missing -- LinkedIn, county records, business reviews, broker bio.
 4. Build the profile using the format below.
 5. Flag what's still unknown and suggest where to find it (LinkedIn, county records, broker public profile, business website).
 
