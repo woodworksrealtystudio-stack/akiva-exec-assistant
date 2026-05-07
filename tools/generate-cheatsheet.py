@@ -86,23 +86,23 @@ def render():
     y = 110
 
     # Eyebrow
-    eyebrow = "WOODWORKS REALTY STUDIO  ·  CONTEXT OS"
+    eyebrow = "WOODWORKS REALTY STUDIO  ·  AI EXECUTIVE ASSISTANT"
     eb_fnt = F_SECT(28)
     draw.text((MARGIN, y), eyebrow, font=eb_fnt, fill=ACCENT)
     y += 50
 
     # Title
-    title = "Akiva's Skills Cheat Sheet"
-    tfnt  = F_HL(124)
+    title = "Akiva's Context OS"
+    tfnt  = F_HL(140)
     draw.text((MARGIN, y), title, font=tfnt, fill=NAVY)
-    y += 138
+    y += 156
 
     # Gold accent
     draw.rectangle([(MARGIN, y), (MARGIN + 110, y + 6)], fill=ACCENT)
     y += 36
 
     # Subtitle
-    sub = "Eleven skills, one Context OS. Type any trigger phrase to invoke."
+    sub = "Eleven skills. Type any trigger phrase to invoke. v1 ships now."
     sfnt = F_BODY(34)
     draw.text((MARGIN, y), sub, font=sfnt, fill=CHARCOAL)
     y += 64
@@ -115,8 +115,8 @@ def render():
     draw.text((MARGIN + 24, install_y + 22), "INSTALL", font=inst_label_fnt, fill=ACCENT)
 
     inst_lines = [
-        "git clone https://github.com/woodworksrealtystudio-stack/akiva-exec-assistant.git",
-        "cd akiva-exec-assistant",
+        "git clone https://github.com/woodworksrealtystudio-stack/akiva-exec-assistant.git ~/akiva-context-os",
+        "cd ~/akiva-context-os",
         "claude",
     ]
     inst_fnt = F_BODY(28)
@@ -182,8 +182,9 @@ def render():
         "  · WebFetch -- pull specific URLs",
         "  · tools/generate-flyer.py -- 1-page flyer",
         "",
-        "Connectors (optional, no API keys):",
-        "  · Gmail / Calendar / Drive",
+        "Connector (optional, no API keys):",
+        "  · Microsoft 365 -- Outlook + Calendar + OneDrive",
+        "  · v1 = read-only. v2 adds write side.",
         "  · Open Connectors panel in Claude Code",
     ]
     for ln in note_lines:

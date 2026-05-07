@@ -18,6 +18,7 @@ updated: 2026-05-06
 ## Entities -- Companies & Tools
 
 - [[AppFolio]](entities/appfolio.md) -- property management software, target CRM of record (updated: 2026-05-06)
+- [[Outlook]](entities/outlook.md) -- Microsoft 365 email + calendar of record (updated: 2026-05-07)
 - [[LoopNet]](entities/loopnet.md) -- commercial lead source (updated: 2026-05-06)
 - [[Google Voice]](entities/google-voice.md) -- inbound call + text channel (updated: 2026-05-06)
 - [[Matterport]](entities/matterport.md) -- 3D virtual tours (updated: 2026-05-06)

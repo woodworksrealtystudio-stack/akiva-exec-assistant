@@ -21,21 +21,24 @@ He's a heavy ChatGPT user, comfortable with AI in general but new to agentic sys
 
 ## Three Pain Points (Pre-Mapped)
 
-1. **[[Lead Consolidation]]** -- Inbound from [[LoopNet]] (email), [[Google Voice]] (calls + texts), and direct email all need to land in [[AppFolio]] as the CRM of record.
-2. **[[Vacancy Marketing]]** -- When a space goes vacant: branded flyer + segmented email blast (tenants, brokers, retailers, prospects). Currently manual.
-3. **[[Email Triage]]** -- Calendar, inbox triage, draft replies he reviews before sending. Lights up when Gmail + Calendar MCP is connected.
+1. **[[Lead Consolidation]]** -- Inbound from [[LoopNet]] (Outlook), [[Google Voice]] (calls + texts), and Microsoft Forms all need to land in [[AppFolio]] as the CRM of record. v1 = paste-in workflow + draft follow-ups + AppFolio guest-card instructions. v2 = auto-ingest via Outlook MCP.
+2. **[[Vacancy Marketing]]** -- When a space goes vacant: branded flyer + segmented email blast drafts (tenants, brokers, retailers, prospects). Working in v1.
+3. **[[Email Triage]]** -- Inbox triage + calendar awareness. v1 = read-only via Microsoft 365 connector. v2 = write side via Outlook MCP.
 
 ---
 
 ## Tools Stack
 
-- **[[AppFolio]]** -- property management, target CRM of record
-- **[[LoopNet]]** -- commercial lead source (emails inbound)
-- **[[Google Voice]]** -- inbound calls + texts
-- **[[Matterport]]** -- 3D virtual tours, central to leasing process
-- **[[Gemini]]** -- AI photo staging / destaging
-- **ChatGPT** -- daily driver for drafting, lease language, brainstorming
-- **Claude Code** (this) -- agentic layer on top
+- **[[Outlook]]** (Microsoft 365) -- email + calendar of record. Connected v1 via Claude Code's M365 connector (read-only).
+- **[[AppFolio]]** -- property management, target CRM of record. Basic tier ($300/mo); Plus tier ($1,300/mo) is v2 decision.
+- **OneDrive** -- files. Read-only via M365 connector.
+- **Microsoft Forms** -- lead intake form (responses come into Outlook as email).
+- **[[LoopNet]]** -- commercial lead source (inquiries arrive via Outlook).
+- **[[Google Voice]]** -- inbound calls + texts.
+- **[[Matterport]]** -- 3D virtual tours, central to leasing process.
+- **Gemini** -- AI photo staging / destaging.
+- **ChatGPT** -- daily driver for drafting, lease language, brainstorming.
+- **Claude Code** (this) -- the persistent agentic + context layer.
 
 ---
 
