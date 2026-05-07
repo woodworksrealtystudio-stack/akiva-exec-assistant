@@ -121,16 +121,19 @@ def render_page1():
     y += 46
 
     v1_items = [
-        ("Onboarding interview", "10-min Q&A populates every context file"),
-        ("Read your Outlook", "Search + read inbox, calendar, OneDrive on demand (M365 connector)"),
+        ("Onboarding", "10-min Q&A -- context files filled + wiki entities seeded for your portfolio"),
+        ("Lead parser", "Paste any lead source -- structured + drafted reply + AppFolio guest-card instructions"),
+        ("Inbox triage", "Batch-read Outlook (M365 connector) -- categorize + draft replies"),
+        ("Tenant FAQ", "Pulls actual lease terms + drafts tenant-facing response"),
+        ("Maintenance triage", "Categorize + draft vendor RFQ + tenant ack + log to maintenance database"),
+        ("Tour scheduler", "Reads your Outlook calendar, proposes 3 times, drafts confirmation"),
+        ("Weekly digest", "Monday brief: vacancies + hot leads + leases expiring + top 3 priorities"),
         ("Vacancy marketing", "Branded flyer (PDF + PNG) + 4 segmented email drafts per vacancy"),
-        ("Lease summary", "Paste any lease -- key terms, dates, red-flag list"),
+        ("Lease database", "Every lease processed lands as queryable entry in wiki"),
         ("Comp analysis", "Rent comps, sale comps, cap rates, $/SF"),
-        ("Lead research", "Profile any LoopNet inquiry, broker, or prospect"),
-        ("Email drafts", "Tenant / broker / prospect emails in your voice (you send from Outlook)"),
-        ("Follow-up sequences", "3-touch plans for any contact"),
+        ("Market + lead research", "Live web search + prospect profiling (built-in WebSearch)"),
         ("Wiki second brain", "Tenants, brokers, properties, deals -- compounds over time"),
-        ("Custom skill creation", "Spot a workflow, build a skill for it -- you own them"),
+        ("Custom skill creation", "Spot a workflow, build a skill for it -- you own every skill"),
     ]
 
     body_fnt = F_BODY(24)

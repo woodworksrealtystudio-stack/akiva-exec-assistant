@@ -60,14 +60,19 @@ Then ask in order:
 
 ## After the Interview
 
-Once all questions are answered:
+Once all questions are answered, do ALL of the following in one shot. Don't skip the wiki entity pages -- this is what makes the assistant feel pre-loaded with his world from session 1.
 
 1. **Write `context/me.md`** -- fill in fields from questions 1-10
 2. **Write `context/portfolio.md`** -- fill in owned properties, vacancies, tenants, brokerage pipeline, hot leads from questions 11-15
 3. **Write `context/market.md`** -- fill in submarkets, conditions, pricing knowledge from questions 16-17
 4. **Write `context/tools.md`** -- update with any additional tools mentioned in question 18
-5. **Update `wiki/overview.md`** -- write a 2-3 sentence business summary, update the snapshot section, set updated date to today
-6. **Append `wiki/log.md`** -- one entry: `## [date] update | Onboarding completed -- context populated from interview`
+5. **Create wiki entity page per property** at `wiki/entities/<property-slug>.md` -- one file per address. Include: address, type, total SF, # units, current tenant mix, current vacancy state, intersection / submarket. Use Obsidian frontmatter.
+6. **Create wiki entity page per significant tenant** at `wiki/entities/<tenant-slug>.md` -- one file per tenant who pays meaningful rent. Include: name + DBA, suite, SF, lease end, status. (Skip if Akiva has 50 tenants -- only create entities for the top 10-15 by rent or by importance. Note in `portfolio.md` that the rest are tracked there.)
+7. **Create wiki entity page per active prospect** at `wiki/entities/<prospect-slug>.md` -- one file per hot lead from question 15.
+8. **Create wiki entity page per active broker relationship** at `wiki/entities/<broker-slug>.md` -- if Akiva works with specific brokers regularly.
+9. **Update `wiki/overview.md`** -- write a 2-3 sentence business summary, update the snapshot section, set updated date to today
+10. **Update `wiki/index.md`** -- add every newly created entity to the right category
+11. **Append `wiki/log.md`** -- one entry: `## [date] update | Onboarding completed -- context populated, [N] entities seeded`
 
 Then tell Akiva:
 

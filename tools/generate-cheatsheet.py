@@ -59,17 +59,24 @@ def wrap(text, fnt, max_w):
 
 SKILLS = [
     # group, name, one-line, trigger phrase
-    ("CRE OPS",    "onboard",             "First-run interview -- populates every context file.",                   "\"Onboard me\""),
-    ("CRE OPS",    "email-draft",         "Tenant / broker / prospect emails in your voice.",                       "\"Draft an email to [name]\""),
-    ("CRE OPS",    "vacancy-marketing",   "Branded flyer + segmented email blast for any vacant space.",            "\"Vacancy at [address]\""),
-    ("CRE OPS",    "contract-summary",    "Lease or PSA summary -- terms, dates, red-flag list.",                   "\"Summarize this lease\""),
-    ("CRE OPS",    "comp-analysis",       "Rent comps, sale comps, cap rates, $/SF.",                               "\"Pull comps for [address]\""),
-    ("CRE OPS",    "market-research",     "Live web search -- submarkets, comps, news (built-in WebSearch).",       "\"Research [topic]\""),
-    ("CRE OPS",    "lead-research",       "Profile a LoopNet inquiry, broker rep, or prospect.",                    "\"Look up [name]\""),
-    ("CRE OPS",    "follow-up-sequence",  "Touchpoint plan -- broker, tenant, prospect.",                           "\"Follow up with [name]\""),
-    ("META",       "using-superpowers",   "Establishes the skills framework -- how this all hangs together.",       "Loads automatically"),
-    ("META",       "brainstorming",       "Structured idea exploration before you build anything.",                  "\"Brainstorm with me\""),
-    ("META",       "skill-creator",       "Build a new custom skill when a workflow keeps repeating.",              "\"Build a new skill for X\""),
+    ("DAILY OPS", "onboard",             "First-run interview -- context + wiki entities seeded.",                "\"Onboard me\""),
+    ("DAILY OPS", "lead-parser",         "Paste any new lead -- structured + drafted + AppFolio queued.",         "Paste a LoopNet / Voice / Forms message"),
+    ("DAILY OPS", "inbox-triage",        "Batch Outlook triage -- categorize + draft replies.",                   "\"Triage my inbox\""),
+    ("DAILY OPS", "tenant-faq",          "Tenant question -> response that cites their actual lease.",            "Paste tenant message"),
+    ("DAILY OPS", "maintenance-triage",  "Maintenance ticket -> vendor draft + tenant ack + log.",                "Paste maintenance request"),
+    ("DAILY OPS", "tour-scheduler",      "Reads your calendar, proposes 3 times, drafts confirmation.",           "\"Schedule tour for [name]\""),
+    ("DAILY OPS", "weekly-digest",       "Monday brief -- vacancies, leads, leases, top 3 priorities.",           "\"Weekly digest\""),
+    ("DEALS",     "vacancy-marketing",   "Branded flyer (PDF/PNG) + 4 segmented email drafts.",                   "\"Vacancy at [address]\""),
+    ("DEALS",     "lease-extractor",     "Builds your lease database. Queryable across all leases.",              "\"Log this lease\""),
+    ("DEALS",     "contract-summary",    "Quick one-off lease / PSA summary -- terms + red flags.",               "\"Summarize this contract\""),
+    ("DEALS",     "comp-analysis",       "Rent comps, sale comps, cap rates, $/SF.",                              "\"Pull comps for [address]\""),
+    ("DEALS",     "email-draft",         "General-purpose email in your voice.",                                  "\"Draft an email to [name]\""),
+    ("DEALS",     "follow-up-sequence",  "3-touch plan -- broker, tenant, prospect.",                             "\"Follow up with [name]\""),
+    ("RESEARCH",  "market-research",     "Live web search -- submarkets, news (built-in WebSearch).",             "\"Research [topic]\""),
+    ("RESEARCH",  "lead-research",       "Profile a person or firm before a meeting.",                            "\"Look up [name]\""),
+    ("META",      "brainstorming",       "Structured idea exploration before you build anything.",                "\"Brainstorm with me\""),
+    ("META",      "skill-creator",       "Build a new custom skill when a workflow keeps repeating.",             "\"Build a new skill for X\""),
+    ("META",      "using-superpowers",   "Skills framework -- ties it all together.",                             "Loads automatically"),
 ]
 
 
@@ -101,8 +108,7 @@ def render():
     draw.rectangle([(MARGIN, y), (MARGIN + 110, y + 6)], fill=ACCENT)
     y += 36
 
-    # Subtitle
-    sub = "Eleven skills. Type any trigger phrase to invoke. v1 ships now."
+    sub = "Eighteen skills. Type any trigger phrase to invoke. v1 ships now."
     sfnt = F_BODY(34)
     draw.text((MARGIN, y), sub, font=sfnt, fill=CHARCOAL)
     y += 64
@@ -134,72 +140,70 @@ def render():
     col_x_right = MARGIN + col_w + col_gap
 
     # Group skills
-    cre_ops = [s for s in SKILLS if s[0] == "CRE OPS"]
-    meta    = [s for s in SKILLS if s[0] == "META"]
+    daily_ops = [s for s in SKILLS if s[0] == "DAILY OPS"]
+    deals     = [s for s in SKILLS if s[0] == "DEALS"]
+    research  = [s for s in SKILLS if s[0] == "RESEARCH"]
+    meta      = [s for s in SKILLS if s[0] == "META"]
 
-    # Layout: CRE OPS in left column, META in right column
     col1_y = y
     col2_y = y
 
-    def render_group(group_label, items, x, ystart, col_width):
+    def render_group(group_label, items, x, ystart, col_width, compact=False):
         cy = ystart
-        gfnt = F_SECT(26)
+        gfnt = F_SECT(24)
         draw.text((x, cy), group_label, font=gfnt, fill=ACCENT)
-        cy += 14
-        draw.rectangle([(x, cy + 22), (x + 70, cy + 25)], fill=ACCENT)
-        cy += 46
+        cy += 12
+        draw.rectangle([(x, cy + 20), (x + 60, cy + 23)], fill=ACCENT)
+        cy += 40
+        name_size  = 38 if compact else 42
+        line_step  = 30 if compact else 32
+        item_gap   = 14 if compact else 18
         for _, name, desc, trigger in items:
-            # Skill name (semibold serif)
-            name_fnt = F_SEMI(48)
-            draw.text((x, cy), "·", font=F_BODY(36), fill=ACCENT)
-            draw.text((x + 28, cy - 6), name, font=name_fnt, fill=NAVY)
-            cy += 60
-            # Description
-            d_fnt = F_BODY(24)
-            for ln in wrap(desc, d_fnt, col_width - 36):
-                draw.text((x + 28, cy), ln, font=d_fnt, fill=CHARCOAL)
-                cy += 34
-            # Trigger
-            t_fnt = F_LIGHT(22)
-            for ln in wrap(trigger, t_fnt, col_width - 36):
-                draw.text((x + 28, cy), ln, font=t_fnt, fill=SLATE)
-                cy += 32
-            cy += 22
+            name_fnt = F_SEMI(name_size)
+            draw.text((x, cy), "·", font=F_BODY(28), fill=ACCENT)
+            draw.text((x + 24, cy - 4), name, font=name_fnt, fill=NAVY)
+            cy += name_size + 8
+            d_fnt = F_BODY(20)
+            for ln in wrap(desc, d_fnt, col_width - 28):
+                draw.text((x + 24, cy), ln, font=d_fnt, fill=CHARCOAL)
+                cy += line_step
+            t_fnt = F_LIGHT(19)
+            for ln in wrap(trigger, t_fnt, col_width - 28):
+                draw.text((x + 24, cy), ln, font=t_fnt, fill=SLATE)
+                cy += line_step - 2
+            cy += item_gap
         return cy
 
-    # Left column: 8 CRE OPS skills
-    col1_y = render_group("CRE OPERATIONS", cre_ops, col_x_left, col1_y, col_w)
+    # Left column: DAILY OPS (7 skills) -- the most important lane
+    col1_y = render_group("DAILY OPERATIONS", daily_ops, col_x_left, col1_y, col_w, compact=True)
 
-    # Right column: 3 META skills + breathing room for "build your own"
-    col2_y = render_group("META / SYSTEM", meta, col_x_right, col2_y, col_w)
-    col2_y += 32
+    # Right column: DEALS + RESEARCH + META (6 + 2 + 3 = 11 skills)
+    col2_y = render_group("DEALS + DOCUMENTS", deals, col_x_right, col2_y, col_w, compact=True)
+    col2_y += 12
+    col2_y = render_group("RESEARCH", research, col_x_right, col2_y, col_w, compact=True)
+    col2_y += 12
+    col2_y = render_group("META / SYSTEM", meta, col_x_right, col2_y, col_w, compact=True)
 
-    # Side note in right column under META
-    note_fnt = F_LIGHT(22)
-    note_lines = [
-        "Built-in tools:",
-        "  · WebSearch -- live web data",
-        "  · WebFetch -- pull specific URLs",
-        "  · tools/generate-flyer.py -- 1-page flyer",
-        "",
-        "Connector (optional, no API keys):",
-        "  · Microsoft 365 -- Outlook + Calendar + OneDrive",
-        "  · v1 = read-only. v2 adds write side.",
-        "  · Open Connectors panel in Claude Code",
-    ]
-    for ln in note_lines:
-        draw.text((col_x_right, col2_y), ln, font=note_fnt, fill=SLATE)
-        col2_y += 32
-
-    # Footer
-    footer_y = max(col1_y, col2_y) + 40
-    if footer_y > H - 180:
-        footer_y = H - 180
+    # Footer note (full width below both columns)
+    footer_y = max(col1_y, col2_y) + 24
+    if footer_y > H - 200:
+        footer_y = H - 200
 
     draw.rectangle([(MARGIN, footer_y), (W - MARGIN, footer_y + 1)], fill=BORDER)
-    leg_y = footer_y + 28
+    note_y = footer_y + 24
+    note_fnt = F_LIGHT(20)
+    notes = [
+        "Built-in tools: WebSearch (live web)  ·  WebFetch (specific URLs)  ·  tools/generate-flyer.py (1-page flyer renderer)",
+        "Connector (optional, no API keys): Microsoft 365 -- Outlook + Calendar + OneDrive (read-only in v1, write in v2)",
+        "Add-on (v2): Outlook MCP for send / draft / move + folder watching for auto-ingest",
+    ]
+    for ln in notes:
+        draw.text((MARGIN, note_y), ln, font=note_fnt, fill=CHARCOAL)
+        note_y += 30
+
+    note_y += 16
     leg_fnt = F_LIGHT(22)
-    draw.text((MARGIN, leg_y), "Eleven skills. One Context OS. Built for one operator.", font=leg_fnt, fill=CHARCOAL)
+    draw.text((MARGIN, note_y), "Eighteen skills. One Context OS. Built for one operator.", font=leg_fnt, fill=CHARCOAL)
 
     # Brand block bottom right
     brand_fnt = F_SEMI(36)

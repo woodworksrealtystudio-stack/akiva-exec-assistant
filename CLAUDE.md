@@ -40,16 +40,36 @@ Read, write, and update files in this directory. Use this to:
 ### Skills
 Skills live in `.claude/skills/`. Use them -- don't improvise when a skill exists.
 
+**Daily operations**
 | Skill | When to use |
 |---|---|
-| `onboard` | First-time setup -- populates context files |
-| `email-draft` | Any email -- tenant, broker, prospect, vendor, follow-up |
-| `vacancy-marketing` | A space is available -- generate flyer + segmented email blast |
-| `contract-summary` | Lease or purchase agreement summary, key dates, redline flags |
+| `onboard` | First-time setup -- populates context files + seeds wiki entities |
+| `lead-parser` | Any new lead -- LoopNet email / Forms response / Voice transcript / broker text. Single workflow that logs to wiki + drafts follow-up + outputs AppFolio guest-card instructions |
+| `inbox-triage` | "Triage my inbox" -- batch processes Outlook unread, categorizes, drafts replies |
+| `tenant-faq` | Tenant question -- pulls their actual lease terms and drafts a specific response |
+| `maintenance-triage` | Maintenance request -- categorize, route to vendor, draft tenant ack, log ticket |
+| `tour-scheduler` | Schedule a tour -- reads calendar, proposes 3 times, drafts confirmation |
+| `weekly-digest` | "Monday brief" / "what's the week look like" -- one-page operations digest |
+
+**Deal & document flow**
+| Skill | When to use |
+|---|---|
+| `vacancy-marketing` | A space is available -- generate flyer + segmented email blast drafts |
+| `lease-extractor` | Process a lease -- builds the lease database in `wiki/synthesis/leases/` |
+| `contract-summary` | Quick one-off lease / PSA summary (no database write) |
 | `comp-analysis` | CRE comp pull -- rent per SF, cap rates, NOI |
-| `market-research` | Any topic needing live web data |
-| `lead-research` | Research a LoopNet inquiry, broker rep, or prospect tenant |
-| `follow-up-sequence` | Touchpoint plan for brokers, tenants, prospects |
+| `email-draft` | Any email outside the routed skills above |
+| `follow-up-sequence` | 3-touch plan for brokers, tenants, prospects |
+
+**Research**
+| Skill | When to use |
+|---|---|
+| `market-research` | Any topic needing live web data (WebSearch + WebFetch) |
+| `lead-research` | Profile a person / company before a meeting or call |
+
+**Meta / system**
+| Skill | When to use |
+|---|---|
 | `brainstorming` | Structured exploration before building anything new |
 | `skill-creator` | Build a new custom skill when a workflow keeps repeating |
 | `using-superpowers` | Skill-system meta -- how all of this hangs together |
@@ -89,15 +109,27 @@ Skills live in `.claude/skills/`. Use them -- don't improvise when a skill exist
 
 ---
 
-## How to Handle Any Request
+## How to Handle Any Request -- Skill Routing
 
-1. If it needs live data -- use the WebSearch tool, then respond
-2. If it's an email -- use the email-draft skill (drafts only -- Akiva sends from Outlook himself)
-3. If it's a vacancy -- use the vacancy-marketing skill
-4. If it's a contract / lease -- use the contract-summary skill
-5. If it needs portfolio context -- read `context/portfolio.md` first
-6. If it needs inbox / calendar / file context -- the Microsoft 365 connector is **read-only**. You can search and read; you cannot send or write back. Always end with "I drafted X -- copy this into Outlook and send when ready."
-7. If it's worth remembering -- update the relevant context file or wiki page after responding
+| Akiva says... | Route to skill |
+|---|---|
+| pastes a LoopNet email / Voice transcript / Forms response / new lead | `lead-parser` |
+| "triage my inbox" / "what's in my email" | `inbox-triage` |
+| pastes a tenant question | `tenant-faq` |
+| pastes a maintenance request / "X is broken" | `maintenance-triage` |
+| "schedule a tour for [name]" / "set up a showing" | `tour-scheduler` |
+| "weekly digest" / "Monday brief" / "what's the week look like" | `weekly-digest` |
+| "vacancy at [address]" / "make a flyer" | `vacancy-marketing` |
+| pastes a lease / "log this lease" | `lease-extractor` |
+| "summarize this contract" (one-off, not for database) | `contract-summary` |
+| "pull comps for X" / "what's the rent comp" | `comp-analysis` |
+| "research [topic / person]" | `market-research` or `lead-research` |
+| "follow up with [person]" | `follow-up-sequence` |
+| "draft an email to..." (general) | `email-draft` |
+| "brainstorm with me" / "explore this idea" | `brainstorming` |
+| "build a skill for X" / "automate this workflow" | `skill-creator` |
+
+After ANY skill runs, if substantive: update the relevant wiki page or `context/portfolio.md`.
 
 Don't ask for permission to use tools. Just use them and show the result.
 

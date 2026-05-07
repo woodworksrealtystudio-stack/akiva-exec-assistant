@@ -26,21 +26,33 @@ Claude will walk you through 10 minutes of questions about your portfolio, marke
 
 ---
 
-## What You Get
+## What You Get -- 18 Skills, 7 Pain-Point Workflows
 
-| Capability | What it does |
-|---|---|
-| Onboarding | 10-minute interview that populates every context file |
-| Read your Outlook | Search and read inbox + calendar on demand |
-| Read your OneDrive | Find leases, financials, drawings on demand |
-| Vacancy flyer + email blasts | Branded one-page flyer (PDF/PNG) + 4 segmented email drafts |
-| Lease summary | Paste a lease (or pull from OneDrive) -> key terms + red flags |
-| Comp analysis | Rent comps, sale comps, cap rates, $/SF |
-| Lead research | Profile a LoopNet inquiry, broker, or prospect tenant |
-| Email drafts | Tenant / broker / prospect emails in your voice |
-| Follow-up sequences | 3-touch plan for any contact |
-| Wiki second brain | Tenants, brokers, properties, deals -- compounds over time |
-| Custom skills | Spot a repeating workflow, build a skill for it |
+**Daily operations**
+- **Onboarding** -- 10-min interview that populates every context file + seeds wiki entities for your portfolio
+- **Lead parser** -- paste any LoopNet email / Voice transcript / Forms response / broker text -> structured lead, follow-up draft, AppFolio guest card instructions
+- **Inbox triage** -- "triage my inbox" -> batch processes Outlook, categorizes, drafts replies
+- **Tenant FAQ** -- tenant question comes in -> Claude pulls their actual lease + drafts response
+- **Maintenance triage** -- maintenance request -> category, vendor draft, tenant ack, ticket log
+- **Tour scheduler** -- reads your calendar, proposes 3 times, drafts confirmation, queues the Outlook event
+- **Weekly digest** -- Monday-morning operations brief: vacancies, hot leads, leases expiring, maintenance, top 3 priorities
+
+**Deal & document flow**
+- **Vacancy marketing** -- branded flyer (PDF/PNG) + 4 segmented email drafts per vacancy
+- **Lease extractor** -- builds your queryable lease database -- "show me every lease expiring in 12 months"
+- **Contract summary** -- quick one-off lease / PSA summary
+- **Comp analysis** -- rent comps, sale comps, cap rates, $/SF
+- **Email drafts** -- general email drafting in your voice
+- **Follow-up sequences** -- 3-touch plan for any contact
+
+**Research**
+- **Market research** -- live web data on submarkets, comps, news (built-in WebSearch)
+- **Lead research** -- profile a person / company before a meeting
+
+**Meta / system**
+- **Brainstorming** -- structured exploration before you build anything new
+- **Skill creator** -- build a new custom skill when a workflow keeps repeating
+- **Using-superpowers** -- the framework that ties it all together
 
 ---
 
