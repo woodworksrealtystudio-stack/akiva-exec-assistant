@@ -7,6 +7,8 @@ sources: 1
 
 # Overview
 
+> **The point of Akiva's Context OS:** give attention to every lead that comes in, while still running the property management company. AI in the back, Akiva in the front.
+
 _High-level synthesis of what the wiki knows. Read this first, then navigate via [[index]] for specifics._
 
 ---

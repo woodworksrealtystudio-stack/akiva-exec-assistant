@@ -28,9 +28,11 @@ updated: 2026-05-06
 
 ## Concepts
 
-- [[Lead Consolidation]](concepts/lead-consolidation.md) -- pain point #1 framework (updated: 2026-05-06)
+- [[Lead Consolidation]](concepts/lead-consolidation.md) -- pain point #1 framework (updated: 2026-05-07)
 - [[Vacancy Marketing]](concepts/vacancy-marketing.md) -- pain point #2 framework (updated: 2026-05-06)
-- [[Email Triage]](concepts/email-triage.md) -- pain point #3 framework (updated: 2026-05-06)
+- [[Email Triage]](concepts/email-triage.md) -- pain point #3 framework (updated: 2026-05-07)
+- [[Realm-X vs Context OS]](concepts/realm-x-vs-context-os.md) -- explicit comparison of AppFolio's Realm-X vs this system (updated: 2026-05-07)
+- [[Brokerage Pipeline]](concepts/brokerage-pipeline.md) -- third-party brokerage growth lane (updated: 2026-05-07)
 
 ---
 
@@ -42,4 +44,10 @@ updated: 2026-05-06
 
 ## Synthesis
 
-_No entries yet. Comp reports, deal analyses, and answered questions will appear here._
+### Lease Database
+- [[SAMPLE -- 1364 Briar Vista Suite 200]](synthesis/leases/SAMPLE-1364-briar-vista-suite-200.md) -- demo entry, replace once real leases are logged
+
+### Maintenance Log
+- [[SAMPLE -- 2026-05-07 Briar Vista HVAC]](synthesis/maintenance/SAMPLE-2026-05-07-briar-vista-hvac.md) -- demo entry
+
+_Comp reports, deal analyses, and answered questions will appear here as they're produced._
