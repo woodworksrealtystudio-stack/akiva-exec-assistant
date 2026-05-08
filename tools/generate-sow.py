@@ -84,13 +84,20 @@ def render_page1():
     draw.text((MARGIN, y), title, font=F_HL(140), fill=NAVY)
     y += 162
 
-    # Subtitle
+    # Subtitle + master frame
     draw.rectangle([(MARGIN, y), (MARGIN + 110, y + 6)], fill=ACCENT)
     y += 32
-    draw.text((MARGIN, y), "AI executive assistant for one-man CRE -- 30-day pilot.", font=F_BODY(34), fill=CHARCOAL)
-    y += 60
-    draw.text((MARGIN, y), "Built by Woodworks Realty Studio. You own the repo.", font=F_BODY(28), fill=SLATE)
-    y += 60
+    draw.text((MARGIN, y), "AI executive assistant for one-man CRE.", font=F_BODY(34), fill=CHARCOAL)
+    y += 50
+    # Master frame
+    mf_fnt = F_SEMI(28)
+    mf = "The point: give attention to every lead while still running the company."
+    for ln in wrap(mf, mf_fnt, TEXT_W):
+        draw.text((MARGIN, y), ln, font=mf_fnt, fill=NAVY)
+        y += 38
+    y += 8
+    draw.text((MARGIN, y), "Built by Woodworks Realty Studio. You own the repo.", font=F_BODY(24), fill=SLATE)
+    y += 50
 
     # Pricing block
     pbox_top = y
@@ -121,32 +128,36 @@ def render_page1():
     y += 46
 
     v1_items = [
-        ("Onboarding", "10-min Q&A -- context files filled + wiki entities seeded for your portfolio"),
-        ("Lead parser", "Paste any lead source -- structured + drafted reply + AppFolio guest-card instructions"),
-        ("Inbox triage", "Batch-read Outlook (M365 connector) -- categorize + draft replies"),
-        ("Tenant FAQ", "Pulls actual lease terms + drafts tenant-facing response"),
-        ("Maintenance triage", "Categorize + draft vendor RFQ + tenant ack + log to maintenance database"),
-        ("Tour scheduler", "Reads your Outlook calendar, proposes 3 times, drafts confirmation"),
-        ("Weekly digest", "Monday brief: vacancies + hot leads + leases expiring + top 3 priorities"),
-        ("Vacancy marketing", "Branded flyer (PDF + PNG) + 4 segmented email drafts per vacancy"),
-        ("Lease database", "Every lease processed lands as queryable entry in wiki"),
+        ("Onboarding", "10-min Q&A -- already knows you, fills the gaps, seeds wiki entities"),
+        ("Lead parser", "Any lead source -- structured + drafted reply + AppFolio guest-card spec + dedup"),
+        ("Inbox triage", "Batch-read Outlook -- categorize + draft replies"),
+        ("Tenant FAQ", "Pulls actual lease + drafts response in your relationship-first voice"),
+        ("Maintenance triage", "Categorize + draft vendor RFQ + tenant ack + log to database"),
+        ("Tour scheduler", "Reads calendar, proposes 3 times, drafts confirmation"),
+        ("Weekly digest", "Monday brief -- vacancies, leads, leases expiring, top 3 priorities"),
+        ("Vacancy marketing", "Branded flyer (PDF/PNG) + 4 segmented email drafts per vacancy"),
+        ("Matterport prep", "Bridge step from Matterport upload to flyer-ready photos (Gemini staging prompts)"),
+        ("Lease extractor", "Builds queryable lease database -- 'what expires in 12 months' just works"),
+        ("Lease drafter", "Clauses + redlines + alternative wordings during negotiations"),
+        ("Pricing review", "Internal -- 'is Suite 200 underpriced?' Pulls your lease + market comps"),
+        ("Contract summary", "Quick one-off lease / PSA summary"),
         ("Comp analysis", "Rent comps, sale comps, cap rates, $/SF"),
-        ("Market + lead research", "Live web search + prospect profiling (built-in WebSearch)"),
+        ("Market + lead research", "Live web search + prospect profiling"),
         ("Wiki second brain", "Tenants, brokers, properties, deals -- compounds over time"),
         ("Custom skill creation", "Spot a workflow, build a skill for it -- you own every skill"),
     ]
 
-    body_fnt = F_BODY(24)
-    light_fnt = F_LIGHT(22)
-    name_fnt = F_SEMI(34)
+    body_fnt = F_BODY(20)
+    light_fnt = F_LIGHT(20)
+    name_fnt = F_SEMI(28)
     for name, desc in v1_items:
-        draw.text((MARGIN + 4, y), "·", font=F_BODY(28), fill=ACCENT)
-        draw.text((MARGIN + 28, y - 4), name, font=name_fnt, fill=NAVY)
+        draw.text((MARGIN + 4, y), "·", font=F_BODY(24), fill=ACCENT)
+        draw.text((MARGIN + 28, y - 2), name, font=name_fnt, fill=NAVY)
         nw, _ = measure(name_fnt, name)
         draw.text((MARGIN + 36 + nw, y + 4), "-- " + desc, font=light_fnt, fill=CHARCOAL)
-        y += 42
+        y += 34
 
-    y += 16
+    y += 10
 
     # v2 / v3
     draw.text((MARGIN, y), "WHAT THE RETAINER UNLOCKS (v2 add-ons, when ready)", font=F_SECT(28), fill=ACCENT)

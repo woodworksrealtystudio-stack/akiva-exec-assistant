@@ -59,25 +59,28 @@ def wrap(text, fnt, max_w):
 
 SKILLS = [
     # group, name, one-line, trigger phrase
-    ("DAILY OPS", "onboard",             "First-run interview -- context + wiki entities seeded.",                "\"Onboard me\""),
-    ("DAILY OPS", "lead-parser",         "Paste any new lead -- structured + drafted + AppFolio queued.",         "Paste a LoopNet / Voice / Forms message"),
+    ("DAILY OPS", "onboard",             "Greets you by name. Confirms what's known + fills gaps.",               "\"Onboard me\""),
+    ("DAILY OPS", "lead-parser",         "Any lead source -- structured + drafted + AppFolio spec + dedup.",      "Paste a LoopNet / Voice / Forms message"),
     ("DAILY OPS", "inbox-triage",        "Batch Outlook triage -- categorize + draft replies.",                   "\"Triage my inbox\""),
     ("DAILY OPS", "tenant-faq",          "Tenant question -> response that cites their actual lease.",            "Paste tenant message"),
     ("DAILY OPS", "maintenance-triage",  "Maintenance ticket -> vendor draft + tenant ack + log.",                "Paste maintenance request"),
     ("DAILY OPS", "tour-scheduler",      "Reads your calendar, proposes 3 times, drafts confirmation.",           "\"Schedule tour for [name]\""),
     ("DAILY OPS", "weekly-digest",       "Monday brief -- vacancies, leads, leases, top 3 priorities.",           "\"Weekly digest\""),
     ("DEALS",     "vacancy-marketing",   "Branded flyer (PDF/PNG) + 4 segmented email drafts.",                   "\"Vacancy at [address]\""),
+    ("DEALS",     "matterport-prep",     "Matterport upload -> flyer-ready photos. Gemini staging prompts.",      "\"Matterport done for [property]\""),
     ("DEALS",     "lease-extractor",     "Builds your lease database. Queryable across all leases.",              "\"Log this lease\""),
+    ("DEALS",     "lease-drafter",       "Clauses, redlines, alternative wordings during negotiations.",          "\"Draft a [TI / option / etc.] clause\""),
+    ("DEALS",     "pricing-review",      "Internal -- 'is Suite 200 underpriced?' Your lease + market comps.",    "\"Pricing for [tenant or suite]\""),
     ("DEALS",     "contract-summary",    "Quick one-off lease / PSA summary -- terms + red flags.",               "\"Summarize this contract\""),
-    ("DEALS",     "comp-analysis",       "Rent comps, sale comps, cap rates, $/SF.",                              "\"Pull comps for [address]\""),
+    ("DEALS",     "comp-analysis",       "Rent comps, sale comps, cap rates, $/SF -- outward.",                   "\"Pull comps for [address]\""),
     ("DEALS",     "email-draft",         "General-purpose email in your voice.",                                  "\"Draft an email to [name]\""),
     ("DEALS",     "follow-up-sequence",  "3-touch plan -- broker, tenant, prospect.",                             "\"Follow up with [name]\""),
     ("RESEARCH",  "market-research",     "Live web search -- submarkets, news (built-in WebSearch).",             "\"Research [topic]\""),
     ("RESEARCH",  "lead-research",       "Profile a person or firm before a meeting.",                            "\"Look up [name]\""),
     ("META",      "brainstorming",       "Structured idea exploration before you build anything.",                "\"Brainstorm with me\""),
     ("META",      "skill-creator",       "Build a new custom skill when a workflow keeps repeating.",             "\"Build a new skill for X\""),
-    ("META",      "using-superpowers",   "Skills framework -- ties it all together.",                             "Loads automatically"),
 ]
+# (using-superpowers loads automatically as the framework -- documented in CLAUDE.md, not on the cheatsheet)
 
 
 def render():
@@ -108,7 +111,7 @@ def render():
     draw.rectangle([(MARGIN, y), (MARGIN + 110, y + 6)], fill=ACCENT)
     y += 36
 
-    sub = "Eighteen skills. Type any trigger phrase to invoke. v1 ships now."
+    sub = "Twenty skills + the framework. AI in the back, you in the front."
     sfnt = F_BODY(34)
     draw.text((MARGIN, y), sub, font=sfnt, fill=CHARCOAL)
     y += 64
@@ -150,26 +153,26 @@ def render():
 
     def render_group(group_label, items, x, ystart, col_width, compact=False):
         cy = ystart
-        gfnt = F_SECT(24)
+        gfnt = F_SECT(22)
         draw.text((x, cy), group_label, font=gfnt, fill=ACCENT)
-        cy += 12
-        draw.rectangle([(x, cy + 20), (x + 60, cy + 23)], fill=ACCENT)
-        cy += 40
-        name_size  = 38 if compact else 42
-        line_step  = 30 if compact else 32
-        item_gap   = 14 if compact else 18
+        cy += 10
+        draw.rectangle([(x, cy + 18), (x + 56, cy + 21)], fill=ACCENT)
+        cy += 34
+        name_size  = 32
+        line_step  = 25
+        item_gap   = 8
         for _, name, desc, trigger in items:
             name_fnt = F_SEMI(name_size)
-            draw.text((x, cy), "·", font=F_BODY(28), fill=ACCENT)
-            draw.text((x + 24, cy - 4), name, font=name_fnt, fill=NAVY)
-            cy += name_size + 8
-            d_fnt = F_BODY(20)
-            for ln in wrap(desc, d_fnt, col_width - 28):
-                draw.text((x + 24, cy), ln, font=d_fnt, fill=CHARCOAL)
+            draw.text((x, cy), "·", font=F_BODY(24), fill=ACCENT)
+            draw.text((x + 22, cy - 2), name, font=name_fnt, fill=NAVY)
+            cy += name_size + 6
+            d_fnt = F_BODY(18)
+            for ln in wrap(desc, d_fnt, col_width - 24):
+                draw.text((x + 22, cy), ln, font=d_fnt, fill=CHARCOAL)
                 cy += line_step
-            t_fnt = F_LIGHT(19)
-            for ln in wrap(trigger, t_fnt, col_width - 28):
-                draw.text((x + 24, cy), ln, font=t_fnt, fill=SLATE)
+            t_fnt = F_LIGHT(17)
+            for ln in wrap(trigger, t_fnt, col_width - 24):
+                draw.text((x + 22, cy), ln, font=t_fnt, fill=SLATE)
                 cy += line_step - 2
             cy += item_gap
         return cy
@@ -203,7 +206,7 @@ def render():
 
     note_y += 16
     leg_fnt = F_LIGHT(22)
-    draw.text((MARGIN, note_y), "Eighteen skills. One Context OS. Built for one operator.", font=leg_fnt, fill=CHARCOAL)
+    draw.text((MARGIN, note_y), "Twenty skills + the framework. One Context OS. AI in the back, you in the front.", font=leg_fnt, fill=CHARCOAL)
 
     # Brand block bottom right
     brand_fnt = F_SEMI(36)

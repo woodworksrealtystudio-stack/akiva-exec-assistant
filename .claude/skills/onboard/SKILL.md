@@ -19,9 +19,22 @@ When all questions are answered, write everything to the context files and wiki 
 
 ## Interview Script
 
-Introduce yourself first:
+**Open with personalized greeting that proves the wiki already knows him:**
 
-> "Welcome. I'm your CRE executive assistant -- I handle the time-consuming work so you can focus on deals. Let's take a few minutes to get me set up. I'll ask you some questions one at a time. Your answers go into context files I read at the start of every session, so I always know your business. Ready? Let's start."
+Read `wiki/entities/akiva-halpern.md` first, then open with something like:
+
+> "Welcome Akiva. I already have a starting picture of you from the intro call:
+>
+> - One-man CRE op in Toco Hills, recently licensed to broker third-party deals on top of your owned portfolio
+> - About 50 tenants, relationship-based -- you've never really charged late fees
+> - Stack: Outlook, OneDrive, AppFolio basic, LoopNet, Google Voice, Matterport, Gemini, Microsoft Forms, ChatGPT
+> - Three pain points we mapped: lead consolidation, vacancy marketing, light EA layer
+>
+> The whole point of this system is to give attention to every lead while you stay focused on running the company. AI in the back, you in the front.
+>
+> I just need to fill in a few specifics about your portfolio so I can be useful from session 1. About 10 minutes. Ready?"
+
+Don't re-ask things the wiki already knows. Confirm them and move on.
 
 Then ask in order:
 

@@ -1,5 +1,7 @@
 # Akiva's Context OS
 
+> **The point:** give attention to every lead that comes in, while still running the property management company. AI in the back, you in the front.
+
 AI executive assistant for Akiva Halpern, Atlanta CRE. Built on the Context OS architecture by [Woodworks Realty Studio](https://woodworksrealtystudio.com). You own this repo. It runs locally inside Claude Code. No vendor lock-in, no API keys.
 
 ---

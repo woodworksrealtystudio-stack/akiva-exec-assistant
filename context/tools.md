@@ -87,6 +87,12 @@ Akiva's existing tech stack. Reference this when drafting workflows or recommend
 
 ---
 
+## Social Media Bot (already running -- don't duplicate)
+**What it is:** Akiva already has a bot that automatically posts to his social media accounts.
+**v1:** Out of scope. This Context OS does NOT post social. Don't suggest building social posting -- it's already covered.
+
+---
+
 ## Future / To-Add Decisions
 
 - **AppFolio Plus upgrade** -- $1,000/mo more for API access + their Realm-X AI. Decide in v2.

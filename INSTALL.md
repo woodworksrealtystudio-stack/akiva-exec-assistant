@@ -1,5 +1,7 @@
 # Install -- Akiva's Context OS
 
+> **The point:** give attention to every lead while still running the company. AI in the back, you in the front.
+
 Two pastes. Five minutes. Done.
 
 ---
